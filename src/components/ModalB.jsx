@@ -43,6 +43,11 @@ const ModalB= () => {
     <div>
       <CommonModal show={true} >
         <div>
+
+        <Modal.Header >
+          <Modal.Title>Modal B</Modal.Title>
+        </Modal.Header>
+            
         <table className="table table-striped ">
                         <thead>
 

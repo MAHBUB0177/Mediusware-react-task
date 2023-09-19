@@ -14,7 +14,6 @@ const Problem1 = () => {
     
 
     const tableFilteData = useCallback(()=> {
-        console.log({show})
         if(show === 'all'){
             return listitem.sort((a, b) => a.status?.localeCompare(b?.status))
         }else if(show === "active"){

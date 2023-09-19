@@ -6,7 +6,7 @@ import ActionButton from "./ActionButton";
 import { Form } from "react-bootstrap";
 
 const ModalA = () => {
-  const [response, setResponse] = useState()
+  const [response, setResponse] = useState();
   const [contact, setContact] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -19,8 +19,8 @@ const ModalA = () => {
         return response.json();
       })
       .then((responseData) => {
-        setResponse(responseData?.results)
-        setContact(responseData?.results)
+        setResponse(responseData?.results);
+        setContact(responseData?.results);
         setLoading(false);
       })
       .catch((error) => {
@@ -31,51 +31,49 @@ const ModalA = () => {
 
   const _handleCheckbox = (e) => {
     if (e.target.checked) {
-        const newContact = contact?.filter(item => item?.id % 2 === 0)
-        setContact(newContact)
-    }else {
-        setContact(response);
+      const newContact = contact?.filter((item) => item?.id % 2 === 0);
+      setContact(newContact);
+    } else {
+      setContact(response);
     }
-  }
+  };
   return (
     <div>
-      <CommonModal show={true} >
+      <CommonModal show={true}>
         <div>
-        <table className="table table-striped ">
-                        <thead>
-
-                            
-                        <tr>
-                        <th scope="col">id</th>
-                            <th scope="col">phone</th>
-                            <th scope="col">country</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {
-                                contact?.map((item,index)=>
-                                
-                                <tr key={index}>
-                                    <td scope="col">{item?.id}</td>
-                            <td scope="col">{item?.phone}</td>
-                            <td scope="col">{item?.country?.name}</td>
-                        </tr>
-                                )
-                            }
-                        </tbody>
-        </table>
+        <Modal.Header >
+          <Modal.Title>Modal A</Modal.Title>
+        </Modal.Header>
+          <table className="table table-striped ">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">phone</th>
+                <th scope="col">country</th>
+              </tr>
+            </thead>
+            <tbody>
+              {contact?.map((item, index) => (
+                <tr key={index}>
+                  <td scope="col">{item?.id}</td>
+                  <td scope="col">{item?.phone}</td>
+                  <td scope="col">{item?.country?.name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        <div className='d-flex  justify-content-between'>
-          <ActionButton/>
+        <div className="d-flex  justify-content-between">
+          <ActionButton />
           <Form.Check
             inline
             label="filter"
             name="group1"
-            type='checkbox'
+            type="checkbox"
             onClick={_handleCheckbox}
           />
         </div>
-      </CommonModal >
+      </CommonModal>
     </div>
   );
 };

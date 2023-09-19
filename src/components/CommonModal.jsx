@@ -6,7 +6,7 @@ const CommonModal = ({ show, children, size, onClose, data }) => {
 
   return (
     <Modal
-    className="modal-lg"
+    size="lg"
       show={show}
       onHide={onClose}
       
